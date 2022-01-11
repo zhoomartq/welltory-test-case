@@ -1,0 +1,30 @@
+version: '3'
+
+services: 
+  web:
+    build: 
+      context: ./welltr
+    container_name: django.welltr
+    ports: 
+      - "80:8080"
+    depends_on: 
+      - postgres
+    command: ["python", "manage.py", "runserver", "0.0.0.0:8080"]
+    volumes:
+      - ./welltr:/welltr
+      - static_volume:/usr/src/web/static
+ 
+
+    env_file: 
+      - ./.env
+
+  postgres:
+    image: postgres:12.0-alpine
+    container_name: django.postgres
+    volumes:
+      - ./postgres:/var/lib/postgresql/data/
+    env_file: 
+      - ./.env
+
+volumes:
+  static_volume:
