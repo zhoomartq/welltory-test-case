@@ -9,5 +9,7 @@
 
 далее docker-compose up -d --build
 
+не успел доделать, так как проект прилетел
+
 
 http://localhost/docs/ swagger documentation
